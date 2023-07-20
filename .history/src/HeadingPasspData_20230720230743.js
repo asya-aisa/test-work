@@ -1,0 +1,1 @@
+class HeadinPasspData extends compo

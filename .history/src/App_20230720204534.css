@@ -1,0 +1,31 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.block-step-one {
+  width: 80%;
+
+}
+.heading-step-one {
+  width: 275px;
+  height: 25px;
+  border-bottom: 3px solid #4285F4 ;
+  line-height: 25px;
+  font-size: 18px;
+  color: #484848;
+}
+.container-fio-birth {
+  display: flex;
+  justify-content: space-between;
+}
+.box-data-birth {
+  display: flex;
+  flex-direction: column;
+}
+.box-under-birth {
+  display: flex;
+  justify-content: flex-end;
+}
+input-birth
+

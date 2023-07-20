@@ -1,0 +1,71 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.block-step-one {
+  width: 80%;
+
+}
+.heading-step-one {
+  width: 275px;
+  height: 25px;
+  border-bottom: 3px solid #4285F4 ;
+  line-height: 25px;
+  font-size: 18px;
+  color: #484848;
+}
+.container-input {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.box-input-column {
+  display: flex;
+  flex-direction: column;
+  width: 47%;
+}
+.input-padding {
+  padding: 9px;
+}
+.input-padding::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+/* .input-padding[type=date]{
+	background:url("icons8-check-30.png") #f7f9fc no-repeat 99% 50%;
+} */
+.label-input {
+  font-size: 18px;
+  color: #484848;
+}
+.red-text-under-input {
+  font-size: 13px;
+  color: #F44336;
+  margin: 0px;
+  align-self: flex-end;
+}
+
+.container-email {
+  margin-bottom: 30px;
+}
+.box-email {
+  display: flex;
+  flex-direction: column;
+  width: 47%;
+}
+.box-email-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.input-email {
+  padding: 9px;
+}
+.hints {
+  font-size: 13px;
+  color: #979797;
+}
+
+.container-photo-doc {
+  width: ;
+}

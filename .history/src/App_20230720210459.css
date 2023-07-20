@@ -1,0 +1,43 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.block-step-one {
+  width: 80%;
+
+}
+.heading-step-one {
+  width: 275px;
+  height: 25px;
+  border-bottom: 3px solid #4285F4 ;
+  line-height: 25px;
+  font-size: 18px;
+  color: #484848;
+}
+.container-fio-birth {
+  display: flex;
+  justify-content: space-between;
+  
+}
+.box-data-birth {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+.input-birth {
+  padding: 9px;
+}
+input-birth::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+.label-input {
+  font-size: 18px;
+  color: #484848;
+}
+.red-text-under-input {
+  font-size: 13px;
+  color: #F44336;
+  margin: 0px;
+  align-self: flex-end;
+}
