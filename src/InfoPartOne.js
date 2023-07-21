@@ -7,7 +7,7 @@ import InputMask from "react-input-mask";
 import { FioSuggestions } from 'react-dadata';
 import 'react-dadata/dist/react-dadata.css';
 import { PhotoDoc } from "./PhotoDoc";
-import { HeadinPasspData } from "./HeadingPasspData";
+import HeadingPD from "./HeadingPD";
 
 
 
@@ -16,10 +16,12 @@ export class InfoPartOne extends Component {
     state = {
         valueFio: "",
         inputBirthday: '',
+        inputEmail: '',
         birthdayInfo: false,
         textIfUnder18: '',
         inputPassportNumber: '',
         textDataPassport: '',
+        inputByWhomPassport: '',
         inputPassportData: ''
     }
 
@@ -32,13 +34,11 @@ export class InfoPartOne extends Component {
         let userDate = new Date(e);
         
         if(userDate > date18ago) {
-            this.setState({textIfUnder18: 'нельзя подписать договор, если вам меньше 18 лет'})
-            this.setState({birthdayInfo: false})
+            this.setState({textIfUnder18: 'нельзя подписать договор, если вам меньше 18 лет', birthdayInfo: false})
 
         }
         else {
-            this.setState({textIfUnder18: ''})
-            this.setState({birthdayInfo: true})
+            this.setState({textIfUnder18: '', birthdayInfo: true})
         }
     }
 
@@ -91,22 +91,27 @@ export class InfoPartOne extends Component {
     //     })
     // }
 
-    checkState(birthday) {
-        if(this.state.birthdayInfo === false) {
+    checkState(e, birthday, fio, mail) {
+        e.preventDefault();
+
+        if(birthday === false || fio === '' || mail === '' ) {
             alert('не все поля заполнены')
         }
+
         else {
-            console.log(this.state.inputBirthday)
-        }
-        
+            console.log('Дата рождения ' + this.state.inputBirthday)
+            console.log('ФИО ' + fio.value)
+            console.log('Почта ' + mail)
+        }  
     }
 
 
     render() {
         return (
             <div className="block-step-one">
+                <form>
                 <div className="container-input">
-                  <div>
+                  <div className="box-input-column">
                     <label className="label-input">Фамилия Имя Отчество</label>
                     {/* <input type="text" pattern="a-zа-я"
                     onChange={(e) => {this.onChangeEvent(e.target.value)}} 
@@ -129,11 +134,12 @@ export class InfoPartOne extends Component {
                         <label className="label-input">Почта </label>
                         <label className="hints">на этот адрес мы пришлём страховой полис</label>
                       </div>
-                      <input className="input-padding" type="email" required=""  />
+                      <input className="input-padding" type="email" required=""
+                      onChange={(e) => {this.setState({inputEmail: e.target.value})}}  />
                     </div>
                 </div>
 
-                <HeadinPasspData />
+            <HeadingPD text='Паспортные данные' />
 
 
                 <div className="container-input">
@@ -142,7 +148,7 @@ export class InfoPartOne extends Component {
                           <label className="label-input">Серия и номер </label>
                           <label className="hints">только паспорт РФ</label>
                        </div>
-                       <InputMask className="input-padding" mask="9999 999999"
+                       <InputMask onChange={(e) => {this.setState({inputPassportNumber: e.target.value})}} className="input-padding" mask="9999 999999"
                        // onChange={(e) => {this.numberPassport(e.target.value)}}
                        // value={this.state.inputPassportNumber}
                        />
@@ -150,7 +156,8 @@ export class InfoPartOne extends Component {
                     
                    <div className="box-input-column">
                       <label className="label-input">Кем выдан</label>
-                      <input className="input-padding" type="text" placeholder="Заполните точно как в паспорте"/>
+                      <input className="input-padding" type="text" placeholder="Заполните точно как в паспорте"
+                      onChange={(e) => {this.setState({inputByWhomPassport: e.target.value})}}/>
                    </div>
                 </div>
                 
@@ -170,7 +177,8 @@ export class InfoPartOne extends Component {
 
                 <PhotoDoc />
 
-                <button onClick={() => this.checkState(this.state.birthdayInfo)}>Далее</button>
+                <button className="btn-next" type="submit" onClick={(e) => this.checkState(e, this.state.birthdayInfo, this.state.valueFio, this.state.inputEmail, this.state.inputPassportNumber, this.state.inputByWhomPassport, this.state.inputPassportData)}>Далее</button>
+                </form>
             </div>
         )
     }
